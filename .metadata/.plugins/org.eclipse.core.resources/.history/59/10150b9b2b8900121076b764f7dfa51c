@@ -1,0 +1,34 @@
+package edu.nyu.cs.cs2580;
+
+import java.util.Iterator;
+
+public class Corpus implements Iterable<String[]>{
+
+	class CorpusIterator implements Iterator<String[]>{
+
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public String[] next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	@Override
+	public Iterator<String[]> iterator() {
+		return new CorpusIterator();
+	}
+	
+}

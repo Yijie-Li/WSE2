@@ -185,7 +185,6 @@ class IndexerFullScan extends Indexer implements Serializable {
     for (Integer freq : loaded._termCorpusFrequency.values()) {
       this._totalTermFrequency += freq;
     }
-    this._dictionary = loaded._dictionary;
     this._terms = loaded._terms;
     this._termCorpusFrequency = loaded._termCorpusFrequency;
     this._termDocFrequency = loaded._termDocFrequency;

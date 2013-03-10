@@ -1,0 +1,75 @@
+package edu.nyu.cs.cs2580;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import edu.nyu.cs.cs2580.SearchEngine.Options;
+
+/**
+ * @CS2580: Implement this class for HW2.
+ */
+public class IndexerInvertedDoconly extends Indexer {
+
+  public IndexerInvertedDoconly(Options options) {
+    super(options);
+    System.out.println("Using Indexer: " + this.getClass().getSimpleName());
+  }
+
+  @Override
+  public void constructIndex() throws IOException {
+	  int docId=0;
+	  String corpusFile = _options._corpusPrefix + "/corpus.tsv";
+	    System.out.println("Construct index from: " + corpusFile);
+	    Map<String,Set<Integer>>map=new HashMap<String,Set<Integer>>();
+	    Corpus c=new Corpus();
+	    DocumentIndexed[] di=new DocumentIndexed[c.getNumFiles()];
+	    for(String[] strAr:c){
+	    	for(String s:strAr){
+	    		if(!map.containsKey(s))
+	    			map.put(s, new HashSet<Integer>());
+	    		map.get(s).add(docId);
+	    	}
+	    	di[docId]=new DocumentIndexed(docId);
+	    	
+	    	docId+=1;
+	    }
+  }
+
+  @Override
+  public void loadIndex() throws IOException, ClassNotFoundException {
+  }
+
+  @Override
+  public Document getDoc(int docid) {
+    return null;
+  }
+
+  /**
+   * In HW2, you should be using {@link DocumentIndexed}
+   */
+  @Override
+  public Document nextDoc(Query query, int docid) {
+    return null;
+  }
+
+  @Override
+  public int corpusDocFrequencyByTerm(String term) {
+    return 0;
+  }
+
+  @Override
+  public int corpusTermFrequency(String term) {
+    return 0;
+  }
+
+  @Override
+  public int documentTermFrequency(String term, String url) {
+    SearchEngine.Check(false, "Not implemented!");
+    return 0;
+  }
+}
